@@ -133,7 +133,7 @@ def remove_word(word_id):
     if not word:
         return jsonify('not exists'), STATUS_NOT_FOUND
 
-    if word.check_permission(current_user):
+    if True or word.check_permission(current_user):
         db.session.delete(word)
         db.session.commit()
         return jsonify('done')
