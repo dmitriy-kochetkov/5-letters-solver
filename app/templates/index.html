@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+    {{super()}}
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/index.js')}}"></script>
+{% endblock %}
+
+{% block content %}
+
+    
+    <div id="words-container" class="words-centered">
+    {% if today_words %}
+        {% for word in today_words %}
+        <div class="word">
+            {% for letter in word.split_word() %}
+                <div class="letter big-letter {{ letter['status'] }}">
+                    {{ letter['symbol'] }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    {% else %}
+    <div id="no-words-banner">
+        <h4>There are no any added words today...</h4>
+        <span>Please select any variant or input a word.</span>
+    </div>
+    {% endif %}
+    </div>
+    
+
+    {% if variants %}
+    <div class="words-centered">
+        <h4>Variants <span class="variants-counter" id="total-variants-count">{{ total_variants }}</span></h4>
+    </div>
+    <div class="words-centered">
+        <div id="variants-container" class="variants-centered" onclick="variantClick(event)">
+            {% for variant in variants %}
+            <div class="variant-item">{{ variant }}</div>
+            {% endfor %}
+            {% if variants|length > total_variants%}
+            <div class="variant-end">...</div>
+            {% endif %}
+        </div>
+    </div>
+    {% else %}
+    <div class="words-centered">
+        <h4>No valid variants</h4>
+    </div>
+    {% endif %}
+
+    <div class="words-centered">
+        <div class="word input-word">
+            <div id="input-0" class="input-div letter big-letter excluded" contenteditable oninput="inputHandler(event)" onkeyup="keydownHandler(event)"></div>
+            <div id="input-1" class="input-div letter big-letter excluded" contenteditable oninput="inputHandler(event)" onkeyup="keydownHandler(event)"></div>
+            <div id="input-2" class="input-div letter big-letter excluded" contenteditable oninput="inputHandler(event)" onkeyup="keydownHandler(event)"></div>
+            <div id="input-3" class="input-div letter big-letter excluded" contenteditable oninput="inputHandler(event)" onkeyup="keydownHandler(event)"></div>
+            <div id="input-4" class="input-div letter big-letter excluded" contenteditable oninput="inputHandler(event)" onkeyup="keydownHandler(event)"></div>
+        </div>
+
+        <div id="popup-0" class="popup-letter" onmouseenter="popupMouseEnter(event)" onmouseleave="popupMouseLeave(event)">
+            <input type="radio" class="radio-type radio-excluded" id="letter-type-0" name="letter-type" value="excluded" onchange="changeLetterTypeHandler(event)">
+            <input type="radio" class="radio-type radio-included" id="letter-type-1" name="letter-type" value="included" onchange="changeLetterTypeHandler(event)">
+            <input type="radio" class="radio-type radio-determined" id="letter-type-2" name="letter-type" value="determined" onchange="changeLetterTypeHandler(event)">
+        </div>
+
+        <input id="send-word-btn" type="submit" class="big-button" value="Send" onclick="sendButtonClick(event)" disabled/>
+    </div>
+
+{% endblock %}

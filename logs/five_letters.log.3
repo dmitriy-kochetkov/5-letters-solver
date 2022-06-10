@@ -1,0 +1,102 @@
+2022-05-26 16:39:36,947 ERROR: Exception on /index [GET] [in /Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py:1455]
+Traceback (most recent call last):
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/routes.py", line 24, in index
+    return render_template('index.html', title='5БУКВ solver', variants=variants, today_words=today_words)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    return _render(
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/base.html", line 47, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/index.html", line 9, in block 'content'
+    {% for letter in word%}
+TypeError: 'Word' object is not iterable
+2022-05-26 16:39:49,915 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 16:40:25,743 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 16:51:30,203 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 16:51:34,046 ERROR: Exception on /index [GET] [in /Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py:1455]
+Traceback (most recent call last):
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/routes.py", line 24, in index
+    return render_template('index.html', title='5БУКВ solver', variants=variants, today_words=today_words)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    return _render(
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/base.html", line 47, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/index.html", line 9, in block 'content'
+    {% for letter in word.split_word() %}
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/models.py", line 67, in split_word
+    if self.mask[index] == '^':
+TypeError: string indices must be integers
+2022-05-26 16:52:09,463 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 16:52:11,591 ERROR: Exception on /index [GET] [in /Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py:1455]
+Traceback (most recent call last):
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/routes.py", line 24, in index
+    return render_template('index.html', title='5БУКВ solver', variants=variants, today_words=today_words)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/templating.py", line 148, in render_template
+    return _render(
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/flask/templating.py", line 128, in _render
+    rv = template.render(context)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/jinja2/environment.py", line 1301, in render
+    self.environment.handle_exception()
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/env/lib/python3.8/site-packages/jinja2/environment.py", line 936, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/base.html", line 47, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/dmitriy/Code/tinkoff_5_letter_word/app/templates/index.html", line 9, in block 'content'
+    {% for letter in word.split_word() %}
+TypeError: 'NoneType' object is not iterable
+2022-05-26 16:52:42,504 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 16:53:50,577 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 16:57:56,211 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 17:13:50,022 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 17:14:51,304 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 17:18:11,010 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 17:19:11,507 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-26 17:23:24,021 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-27 09:23:13,393 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-27 09:23:40,978 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-27 09:24:08,103 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-27 09:28:23,499 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-27 09:28:46,374 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-27 09:31:28,797 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
+2022-05-27 09:34:54,128 INFO: Five letters app startup [in /Users/dmitriy/Code/tinkoff_5_letter_word/app/__init__.py:28]
