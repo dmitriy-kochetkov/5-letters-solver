@@ -1,5 +1,5 @@
 # ✋ 5-letters-solver
-## Flask application for solving game "5-letters"
+**Flask application for solving game "5-letters"**
 
 How to run development server:
 
