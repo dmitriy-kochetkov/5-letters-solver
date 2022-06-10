@@ -72,7 +72,7 @@ def add_word():
     word_body = data.get('body')
     word_mask = data.get('mask')
 
-    if not word_body or len(word_body) != 5:
+    if not word_body or len(word_body) != 5 or not word_body.isalpha():
         return jsonify('wrong data format'), STATUS_BAD_REQUEST
 
     if not word_mask or len(word_mask) != 5:

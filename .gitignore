@@ -4,4 +4,4 @@ logs
 russian.txt
 *.db
 .DS_Store
-# init_db.py
+init_db.py
