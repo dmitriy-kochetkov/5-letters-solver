@@ -1,5 +1,5 @@
 venv
-migrations
+#migrations
 logs
 russian.txt
 *.db
