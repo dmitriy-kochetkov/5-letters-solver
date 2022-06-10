@@ -132,7 +132,7 @@ function popupMouseLeave(event) {
 
 function isAlpha(text) {
     for (i=0; i<text.length; i++){
-        if (!text[i].match(/[a-z]/i)){
+        if (!text[i].match(/[а-я]/i)){
             return false
         }
     }
