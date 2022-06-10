@@ -1,7 +1,8 @@
+import os
 from app import app, db
 from app.utils import calculate_variants
 from datetime import date, datetime
-from flask import render_template, flash, redirect, url_for, request, jsonify
+from flask import render_template, flash, redirect, send_from_directory, url_for, request, jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from app.forms import LoginForm
 from app.models import User, Word, today_added_words
@@ -22,6 +23,10 @@ def before_request():
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
+
+@app.route('favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.png', mimetype='image/vnd.microsoft.icon')
 
 @app.route('/')
 @app.route('/index')
