@@ -1,1 +1,1 @@
-web: flask db upgrade; flask translate compile; gunicorn five_letters:app
+web: flask db upgrade; flask translate compile; python3 init_db.py; gunicorn five_letters:app
