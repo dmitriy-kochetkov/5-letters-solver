@@ -1,4 +1,4 @@
-.env
-.migrations
+/env
+/migrations
 russian.txt
 *.db
