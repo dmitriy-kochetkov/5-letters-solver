@@ -130,40 +130,55 @@ function popupMouseLeave(event) {
     }, 300);
 }
 
+function isAlpha(text) {
+    for (i=0; i<text.length; i++){
+        if (!text[i].match(/[a-z]/i)){
+            return false
+        }
+    }
+    return true
+  }
+
 function inputHandler(event) {
     let text = event.target.innerText.toUpperCase().replace(/\s+/g, '');
-    event.target.innerText = text
-    let id = parseInt(event.target.id.split('-')[1])
-    inputs = findInputs()
-
-    if (!text) {
-        //Пустое поле (Backspace)
-        // Скрываем popup если он активен для текущией буквы
-        if (letterPopup && letterPopup == event.target && isPopupVisible()) {
-            hidePopup()
-        }
-
-        if (id > 0) {
-            setCaret(inputs[id-1])
-        }
-    } else if (text.length === 1) {
-        // 1 символ
-        if (id < 4) {
-            setCaret(inputs[id+1])
+    if (isAlpha(text)) {
+        event.target.innerText = text
+        let id = parseInt(event.target.id.split('-')[1])
+        inputs = findInputs()
+    
+        if (!text) {
+            //Пустое поле (Backspace)
+            // Скрываем popup если он активен для текущией буквы
+            if (letterPopup && letterPopup == event.target && isPopupVisible()) {
+                hidePopup()
+            }
+    
+            if (id > 0) {
+                setCaret(inputs[id-1])
+            }
+        } else if (text.length === 1) {
+            // 1 символ
+            if (id < 4) {
+                setCaret(inputs[id+1])
+            } else {
+                setCaret(event.target)
+            }
         } else {
-            setCaret(event.target)
+            // строка
+            text = text.slice(0, 5-id)
+            pos = id
+    
+            for (i=0; i<text.length; i++) {
+                pos = id + i;
+                inputs[pos].innerText = text[i]
+                setLetterClassname(inputs[pos])
+            }
+            setCaret(inputs[pos])
         }
+    
+        
     } else {
-        // строка
-        text = text.slice(0, 5-id)
-        pos = id
-
-        for (i=0; i<text.length; i++) {
-            pos = id + i;
-            inputs[pos].innerText = text[i]
-            setLetterClassname(inputs[pos])
-        }
-        setCaret(inputs[pos])
+        event.target.innerText = ''
     }
 
     setLetterClassname(event.target)
