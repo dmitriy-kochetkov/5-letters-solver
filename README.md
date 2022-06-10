@@ -26,11 +26,11 @@ $ source /venv/bin/activate
 >>> db.session.add(user)
 >>> db.session.commit()
 >>> exit()
-
 ```
+
 5. Start development server at localhost:
 ```
-flask run
+(venv) $ flask run
 ```
 
-6. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) at your browser
+6. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) at your browser.
