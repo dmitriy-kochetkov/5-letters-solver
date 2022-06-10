@@ -1,5 +1,5 @@
-const WORD_SEND_URL = 'http://127.0.0.1:5000/word'
-const CALC_VARS_URL = 'http://127.0.0.1:5000/calc_variants'
+const WORD_SEND_URL = '/word'
+const CALC_VARS_URL = '/calc_variants'
 
 let determinedLetters = {}
 let letterLeaveTimer
