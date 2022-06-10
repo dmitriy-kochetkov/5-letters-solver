@@ -1,4 +1,4 @@
-env
+venv
 migrations
 logs
 russian.txt

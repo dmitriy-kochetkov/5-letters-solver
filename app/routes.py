@@ -24,7 +24,7 @@ def before_request():
         db.session.commit()
 
 
-@app.route('favicon.ico')
+@app.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.png', mimetype='image/vnd.microsoft.icon')
 
