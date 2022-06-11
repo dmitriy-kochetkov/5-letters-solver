@@ -117,7 +117,7 @@ def update_word(word_id):
 
     word = Word.query.get(word_id)
 
-    if word:
+    if word and word.check_permission(current_user):
         word.body = word_body
         word.mask = word_mask
         db.session.commit()

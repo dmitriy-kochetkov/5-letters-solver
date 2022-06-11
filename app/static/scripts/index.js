@@ -96,7 +96,6 @@ function getCoords(elem) {
   }
 
 function undefinedLetterMouseHover(event) {
-    //targetBCR = event.target.getBoundingClientRect()
     targetBCR = getCoords(event.target)       
 
     let popup = document.querySelector('#popup-0')
