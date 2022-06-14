@@ -13,12 +13,17 @@ $ python3 -m venv ./venv:
 $ source /venv/bin/activate
 ```
 
-3. Setting the FLASK_APP environment variable:
+3. Install dependencies:
+```
+(venv) $ pip install -r requirements.txt
+```
+
+4. Set the FLASK_APP environment variable:
 ```
 (venv) $ export FLASK_APP=five_letters.py
 ```
 
-4. Create DB and User:
+5. Create DB and User:
 ```
 (venv) $ flask shell
 >>> user = User(username='Carlos', email='useremail@example.com')
@@ -28,9 +33,9 @@ $ source /venv/bin/activate
 >>> exit()
 ```
 
-5. Start development server at localhost:
+6. Start development server at localhost:
 ```
 (venv) $ flask run
 ```
 
-6. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) at your browser.
+7. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) at your browser.
