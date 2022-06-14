@@ -19,12 +19,12 @@
             {% endfor %}
         </div>
         {% endfor %}
-    {% else %}
-    <div id="no-words-banner">
-        <h4>There are no any added words today...</h4>
-        <span>Please select any variant or input a word.</span>
-    </div>
     {% endif %}
+        <div id="no-words-banner" {% if today_words %} style="display:none;" {% else %} style="display:block;" {% endif %}>
+            <h4>There are no any added words today...</h4>
+            <span>Please select any variant or input a word.</span>
+        </div>
+    
     </div>
     
 

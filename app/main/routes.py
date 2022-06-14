@@ -1,10 +1,10 @@
 import os
 from app import app, db
+from app.main import bp
 from app.utils import calculate_variants
 from datetime import date, datetime
 from flask import render_template, flash, redirect, send_from_directory, url_for, request, jsonify
-from flask_login import current_user, login_user, logout_user, login_required
-from app.forms import LoginForm
+from flask_login import current_user,login_required
 from app.models import User, Word, today_added_words
 from werkzeug.urls import url_parse
 
@@ -17,19 +17,19 @@ STATUS_NOT_FOUND = 404
 STATUS_CONFLICT = 409
 
 
-@app.before_request
+@bp.before_request
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
 
 
-@app.route('/favicon.ico')
+@bp.route('/favicon.ico')
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.png', mimetype='image/vnd.microsoft.icon')
 
-@app.route('/')
-@app.route('/index')
+@bp.route('/')
+@bp.route('/index')
 @login_required
 def index():
     today_words = today_added_words()
@@ -41,32 +41,8 @@ def index():
                             today_words=today_words)
 
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
-            return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
-        return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
-
-
-@app.route('/logout')
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
-
-
 @login_required
-@app.route('/word', methods=['POST',])
+@bp.route('/word', methods=['POST',])
 def add_word():
     data = request.json
     word_body = data.get('body')
@@ -93,7 +69,7 @@ def add_word():
 
 
 @login_required
-@app.route('/word/<word_id>', methods=['GET',])
+@bp.route('/word/<word_id>', methods=['GET',])
 def get_word(word_id):
     word = Word.query.get(word_id)
     if not word:
@@ -103,7 +79,7 @@ def get_word(word_id):
 
 
 @login_required
-@app.route('/word/<word_id>', methods=['PUT',])
+@bp.route('/word/<word_id>', methods=['PUT',])
 def update_word(word_id):
     data = request.json
     word_body = data.get('body')
@@ -127,7 +103,7 @@ def update_word(word_id):
 
 
 @login_required
-@app.route('/word/<word_id>', methods=['DELETE',])
+@bp.route('/word/<word_id>', methods=['DELETE',])
 def remove_word(word_id):
     word = Word.query.get(word_id)
     if not word:
@@ -142,7 +118,7 @@ def remove_word(word_id):
 
 
 @login_required
-@app.route('/actual_words', methods=['GET'])
+@bp.route('/actual_words', methods=['GET'])
 def actual_words():
     today_words = today_added_words()
     words = []
@@ -153,7 +129,7 @@ def actual_words():
 
 
 @login_required
-@app.route('/calc_variants', methods=['GET'])
+@bp.route('/calc_variants', methods=['GET'])
 def calc_variants():
     today_words = today_added_words()
     variants = calculate_variants(today_words)

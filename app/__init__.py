@@ -12,7 +12,16 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 login = LoginManager(app)
-login.login_view = 'login'
+login.login_view = 'auth.login'
+
+from app.errors import bp as errors_bp
+app.register_blueprint(errors_bp, static_folder='static')
+
+from app.auth import bp as auth_bp
+app.register_blueprint(auth_bp, static_folder='static')
+
+from app.main import bp as main_bp
+app.register_blueprint(main_bp, static_folder='static')
 
 if not app.debug:
     if app.config['LOG_TO_STDOUT']:
@@ -32,4 +41,4 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Five letters app startup')
 
-from app import routes, models, errors
+from app import models

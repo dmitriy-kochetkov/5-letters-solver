@@ -46,7 +46,9 @@ function updateSendButtonState() {
 
 function hideEmpyWordsBanner() {
     let banner = document.querySelector('#no-words-banner')
-    banner.style.display = 'none'
+    if (banner) {
+        banner.style.display = 'none'
+    }
 }
 
 function showEmpyWordsBanner() {
@@ -338,13 +340,14 @@ async function updateVariants() {
             }
         });
         const json = await response.json();
-
+        
         if (json.total) {
             setTotalVariatsCount(json.total)
         }
         if (json.words) {
             setVartiants(json.words)
         }
+        
     } catch (error) {
         console.error('Ошибка:', error);
     }
