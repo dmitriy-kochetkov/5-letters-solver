@@ -38,4 +38,4 @@ $ source /venv/bin/activate
 (venv) $ flask run
 ```
 
-7. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) at your browser.
+7. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser.
