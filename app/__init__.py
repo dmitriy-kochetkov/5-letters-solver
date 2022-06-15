@@ -23,6 +23,9 @@ app.register_blueprint(auth_bp, static_folder='static')
 from app.main import bp as main_bp
 app.register_blueprint(main_bp, static_folder='static')
 
+from app.admin import bp as admin_bp
+app.register_blueprint(admin_bp, static_folder='static')
+
 if not app.debug:
     if app.config['LOG_TO_STDOUT']:
         stream_handler = logging.StreamHandler()
